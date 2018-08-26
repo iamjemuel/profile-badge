@@ -11,10 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::post('/upload', 'HomeController@upload');
 
-Auth::routes();
+Route::get('/build/{id}/{fullname}', 'BuildController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Auth::routes('/login');
+
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::fallback(function(){ abort(404); });
