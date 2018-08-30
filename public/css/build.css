@@ -1,0 +1,27 @@
+@font-face {
+	font-family: 'PlayFair';
+	src: url('../lib/bootstrap4/css/PlayFair.otf') format('truetype');
+}
+
+#canvas{
+    background-image: url(/assets/img/background.jpg);
+    width: 500px;
+    height: 500px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+.movable_text{
+    color: white;
+    font-family: 'PlayFair';
+    cursor: move;
+    position: absolute;
+    top: 195px; 
+    left:460px;
+    font-size: 50px;
+    text-shadow: 5px 5px rgb(39, 39, 39);
+}
+
+.movable_img{
+    cursor: move;
+    position: absolute;
+}

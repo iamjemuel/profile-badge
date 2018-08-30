@@ -3,6 +3,7 @@
 
 @push('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('lib/croppie/croppie.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/home.css') }}">
 @endpush
 
 @push('scripts')

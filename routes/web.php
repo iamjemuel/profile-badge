@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 Route::post('/upload', 'HomeController@upload');
 
 Route::get('/build/{id}/{fullname}', 'BuildController@index');
+Route::post('/build/{id}', 'BuildController@build');
 
 // Route::get('/', function () {
 //     return view('welcome');

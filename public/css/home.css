@@ -1,0 +1,8 @@
+@font-face {
+	font-family: 'PlayFair';
+	src: url('../lib/bootstrap4/css/PlayFair.otf') format('truetype');
+}
+
+legend{
+	font-size: 3rem;
+}

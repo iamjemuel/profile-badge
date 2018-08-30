@@ -51,6 +51,14 @@ return [
             'visibility' => 'public',
         ],
 
+         // added specifically for badges file path
+         'badges' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/badges'),
+            'url' => env('APP_URL').'/storage/badges',
+            'visibility' => 'public',
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

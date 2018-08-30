@@ -10,17 +10,17 @@
 			return this;
 		}
 
-		this.request = function($callback)
+		this.request = function($callback, $uri = $modelURI)
 		{
 			if(this.formData == null)
 			{
-				console.log('Form data is empty!');
-				return false;
+				console.log('Form is empty!');
+				return ;
 			}
-			
+				
 			$.ajax({
 					method: 'POST',
-					url: this.modelURI,
+					url: $uri,
 					data: this.formData,
 					headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
 					beforeSend: function()

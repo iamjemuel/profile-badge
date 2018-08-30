@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="user-scalable=0"/> <!--320-->
 
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -26,9 +26,8 @@
     @stack('styles')
 </head>
 <body>
-    <div class="body-background"></div>
-        @yield('content')
-    
+    @yield('content')
+
     @include('layouts.footer')
     
     {{-- Jquery --}}
@@ -39,6 +38,12 @@
 
     {{-- Bootstrap Notify --}}
     <script src="{{ asset('lib/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
+
+    <script src="{{asset('lib/html2canvas/html2canvas.js')}}"></script>
+
+    <script src="{{asset('lib/jquery/jquery-ui.js')}}"></script>
+    
+    <script src="{{asset('lib/jquery/touch-jquery.js')}}"></script>
 
     {{-- Global Function of JS --}}
     <script src="{{ asset('js/global-function.js') }}"></script>

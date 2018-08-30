@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.build')
 @extends('build.content')
 
 @push('styles')
-    <!-- <link rel="stylesheet" type="text/css" href="{{ asset('lib/croppie/croppie.css') }}"> -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/build.css') }}">
 @endpush
 
 @push('scripts')
-    <!-- <script src="{{asset('js/home.js')}}"></script> -->
+    <script src="{{asset('js/build.js')}}"></script>
 @endpush

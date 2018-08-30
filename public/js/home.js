@@ -1,17 +1,23 @@
 $(function()
 {
     $('.avatar-container').hide();
+
     var $home = new RequestHandler('upload');
 
     console.log('Home.js loaded successfully.');
 
     // Initialize Croppie plugin with target div
     $avatar = $('#avatar').croppie({
-        viewport: { width: 300, height: 300, type: 'square' },
-        boundary: { width: 350, height: 350 },
+        viewport: { width: 300, height: 330, type: 'square' },
+        boundary: { width: 330, height: 360 },
         showZoomer: true,
         enableOrientation: true,
         enableExif: true
+    });
+
+    $(document).on('click', '.control-rotate', function($ev)
+    {
+        $avatar.croppie('rotate', parseInt($(this).data('deg')));
     });
 
     $(document).on('change', 'input[name=photo]', function()
