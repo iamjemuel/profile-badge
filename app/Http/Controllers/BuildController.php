@@ -27,16 +27,12 @@ class BuildController extends Controller
     public function index($id, $fullname)
     {
         $user = Upload::find($id);
-        
+
         if(! $user)
             // throws 409 error code
             return RequestChecker::ajax() ? response()->json(['message' => 'Request uploader not found. Please try again.'], 404) : abort('404');
 
-        $user_firstname = strtolower($user->firstname) . '-';
-        $user_lastname = str_replace(' ', '-', strtolower($user->lastname));
-        $user_fullname = $user_firstname . $user_lastname;
-
-        if($user_fullname != $fullname)
+        if($user->kebabCaseFullName() != $fullname)
         {
             // throws 409 error code
             return RequestChecker::ajax() ? response()->json(['message' => 'Request uploader not found. Please try again.'], 404) : abort('404');
@@ -75,7 +71,7 @@ class BuildController extends Controller
                 $user->update(['badge_filepath' => $path]);
                 
                 return response()->json(['message' => 'Build successful.', 
-                                         'url' => 'download/' . $user->id . '/' . strtolower($user->firstname) . '-' . strtolower($user->lastname)
+                                         'url' => '/download/' . $user->id . '/' . $user->kebabCaseFullName()
                                         ], 200);
             }
 

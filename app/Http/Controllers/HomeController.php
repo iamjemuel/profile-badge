@@ -40,19 +40,18 @@ class HomeController extends Controller
     {
         if(!is_null($request->photo))
         {
-            $firstname = self::explodeString($request->firstname);
-            $lastname = self::explodeString($request->lastname);
+            $fullname = kebabCaseName($request->firstname) . '-' . kebabCaseName($request->lastname);
 
             $photo = $request->photo;
             list($type, $photo) = explode(';', $photo);
             list(, $photo) = explode(',', $photo);
             $photo = base64_decode($photo);
-            $name = str_random(8) . $firstname[0] . '.' . $lastname[0] . time() . '.jpg';
+            $name = str_random(8) . $fullname . time() . '.jpg';
             $path = now()->format('Y') . '/' . now()->format('F') . '/' . now()->format('d') . '/' . $name;
 
             if(Storage::disk('avatars')->put($path, $photo))
             {
-                $uploader = Upload::create(['firstname' => ucfirst($firstname[0]),
+                $uploader = Upload::create(['firstname' => ucfirst($request->firstname),
                                             'lastname' => ucfirst($request->lastname),
                                             'avatar_filepath' => $path
                                          ]);
@@ -62,7 +61,9 @@ class HomeController extends Controller
                     return RequestChecker::ajax() ? response()->json(['message' => 'Upload photo failed. Please try again.'], 409) : abort('400');
                 endif;
                 
-                return self::formatResultSet($uploader);
+				return response()->json(['message' => 'Ready to build!', 
+										 'url' => '/build/' . $uploader->id . '/' . $fullname
+										], 200);
             }
 
         }
@@ -79,11 +80,8 @@ class HomeController extends Controller
                         
         );
     }
+	
 
-    private function explodeString($data)
-    {
-        return explode(' ', trim($data));
-    }
 
 }
 

@@ -3,7 +3,6 @@
     <div class="container">
         <br>
         <legend align="center" style="font-family: 'PlayFair';">Welcome!</legend>
-        
         <form id="upload-form" action="{{url('upload')}}" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-lg-3 col-md-3"></div>

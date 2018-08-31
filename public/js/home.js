@@ -75,10 +75,7 @@ $(function()
                 if($response.status === 200 || $response.status === 201)
                 {
                     $responseData = $response.responseJSON;
-                    location.href = '/build/' + 
-                                    $responseData.id + '/' + 
-                                    $responseData.firstname + '-' + 
-                                    $responseData.lastname;
+                    window.location.href = $responseData.url;
                 }
                 else if($response.status === 422)
                 {

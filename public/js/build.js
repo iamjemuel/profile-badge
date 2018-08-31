@@ -16,9 +16,11 @@ $(function()
     //he will take the screen shot of the div and save it as image.
 	$('#btn-build').click(function()
 	{
+        
         //get the div content
         $div_content = document.querySelector("#canvas");
-        //make it as html5 canvas
+
+        // make it as html5 canvas
 		html2canvas($div_content).then(function($canvas) 
 		{
             //change the canvas to jpeg image
@@ -32,13 +34,17 @@ $(function()
     //to save the canvas image
 	function save_img($data)
 	{
+        console.log('Yes');
 		$build.formData = {canvas: $data};
 
 		//ajax method.
 		$build.request(function($response)
 		{
-			console.log($response);
+			$responseData = $response.responseJSON;
+			
+            window.location.href = $responseData.url;
+
 		}, '/build/'+ $('#btn-build').attr('data-id'));
-	} // end save_img()	
+    } // end save_img()	
 
 });

@@ -12,10 +12,14 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::post('/upload', 'HomeController@upload');
+Route::post('upload', 'HomeController@upload');
 
-Route::get('/build/{id}/{fullname}', 'BuildController@index');
-Route::post('/build/{id}', 'BuildController@build');
+Route::get('build/{id}/{fullname}', 'BuildController@index');
+Route::post('build/{id}', 'BuildController@build');
+
+Route::get('download/{id}/{fullname}', 'DownloadController@index');
+
+Route::resource('dev', 'DevController')->middleware('auth');
 
 // Route::get('/', function () {
 //     return view('welcome');
